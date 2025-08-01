@@ -20,4 +20,15 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Exam
+                // Example: sh 'python3 -m unittest tests/'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Example: sh 'scp target/app.jar user@server:/deployments/'
+            }
+        }
+    }
+}
