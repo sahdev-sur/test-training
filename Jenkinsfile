@@ -1,33 +1,37 @@
 pipeline {
     agent any
-
+    
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['dev', 'qa', 'prod'],
+            description: 'Select the environment'
+        )
+    }
     stages {
         stage('Checkout') {
             steps {
-                echo 'Cloning repository...'
-                checkout scm
+               git url: 'https://github.com/sahdev-sur/test-training.git', branch: 'main'
             }
         }
 
-        stage('Build') {
+    stage('Deploy') {
             steps {
-                echo 'Building the project...'
-                // Example: compile or build step
-                // sh 'javac Main.java'
-            }
-        }
+                script {
+                    echo "Selected environment: ${params.ENVIRONMENT}"
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Example: sh 'python3 -m unittest tests/'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-                // Example: sh 'scp target/app.jar user@server:/deployments/'
+                    if (params.ENVIRONMENT == 'dev') {
+                        echo 'Executing DEV deployment...'
+                        // sh './deploy_dev.sh'
+                    } else if (params.ENVIRONMENT == 'qa') {
+                        echo 'Executing QA deployment...'
+                        // sh './deploy_qa.sh'
+                    }
+                    else if (params.ENVIRONMENT == 'prod') {
+                        echo 'Executing PROD deployment...'
+                        // sh './deploy_prod.sh'
+                    }
+                }
             }
         }
     }
