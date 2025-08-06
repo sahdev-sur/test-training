@@ -21,9 +21,13 @@ stage('Manual Approval for Prod') {
     steps {
                 script {
                     def userInput = input(
-                        id: 'ProdApproval', message: 'Approve Production Deployment?', parameters: [
-                            [$class: 'TextParameterDefinition', defaultValue: '', description: 'Enter reason for approval', name: 'ApprovalReason']
-                        ]
+                id: 'ProdApproval',
+                message: 'Approve Production Deployment?',
+                submitter: 'devops_admin, teamlead_user',  // comma-separated Jenkins usernames
+                parameters: [
+                    [$class: 'TextParameterDefinition', name: 'ApprovalReason', defaultValue: '', description: 'Enter reason for approval']
+                ]
+            )
                                         )
     
                     echo "Approval reason: ${userInput}"
