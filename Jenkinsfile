@@ -15,7 +15,7 @@ triggers {
             steps {
                 echo 'Building the application...'
                 // Example build command
-                sh 'npm install'
+                //sh 'npm install'
             }
         }
 
@@ -25,3 +25,25 @@ triggers {
                 // Example test command
             }
         }
+stage('Deploy') {
+            steps {
+                echo 'Deploying to $DEPLOY_PATH ...'
+                // Sample deployment (replace with your actual command)
+                //sh """
+                //mkdir -p $DEPLOY_PATH
+                //cp -r * $DEPLOY_PATH/
+                //echo 'Deployed at: ' $(date)
+                //"""
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build and Deployment successful.'
+        }
+failure {
+            echo '❌ Build or Deployment failed.'
+        }
+    }
+}
