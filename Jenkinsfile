@@ -6,15 +6,15 @@ pipeline {
         // Build is triggered when push event is received from GitHub webhook
         githubPush()
         // Poll GitHub every 1 minute for changes
-        pollSCM('* * * * *')
+        //pollSCM('* * * * *')
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/sahdev-sur/test-training.git'
-            }
-        }
+        //stage('Checkout') {
+          //  steps {
+          //      git branch: 'main', url: 'https://github.com/sahdev-sur/test-training.git'
+        //    }
+     //   }
 
         stage('Build') {
             steps {
@@ -22,11 +22,11 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Running Test'
-            }
-        }
+       // stage('Test') {
+         //   steps {
+            //    echo 'Running Test'
+          //  }
+       // }
 
         stage('Deploy') {
             steps {
