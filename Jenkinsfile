@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/sahdev-sur/test-training.git'
+                git url: 'https://github.com/sahdev-sur/test-training.git', branch: 'Dev'
             }
         }
         stage('Build') {
