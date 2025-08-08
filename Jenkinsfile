@@ -36,7 +36,7 @@ steps {
 echo 'Deploy the build'
 }
 }
-)
+
 post{
     success{
       echo 'Script has passed'
