@@ -31,14 +31,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the build'
-            }
+            } //one more comment
         }
     }
 
     post {
         success {
             echo 'Script has passed'
-        } //this is test comment
+        } 
         failure {
             echo 'Build has failed'
         }
