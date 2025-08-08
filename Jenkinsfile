@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/sahdev-sur/test-training.git'
+                git branch: 'main', url: 'https://https://github.com/sahdev-sur/test-training.git'
             }
         }
 
