@@ -2,8 +2,11 @@ pipeline {
     agent any
 
     triggers {
+        
         // Build is triggered when push event is received from GitHub webhook
         githubPush()
+        // Poll GitHub every 1 minute for changes
+        pollSCM('* * * * *')
     }
 
     stages {
