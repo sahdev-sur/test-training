@@ -1,48 +1,43 @@
 pipeline {
-    agent any // any indicates any env
+    agent any
 
-
-
-    triggers{
-// build is triggers when push event is received from github webhook
-      githubPush()
+    triggers {
+        // Build is triggered when push event is received from GitHub webhook
+        githubPush()
     }
-}
-stages
-{
-  stage('Checkout')
-    steps {
-            git branch: 'main', url: 'https://github.com/sahdev-sur/test-training.git'
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/sahdev-sur/test-training.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Running the build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running Test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the build'
+            }
+        }
     }
-}
 
-stage('Build'){
-steps {
-
-          echo 'Runing the build'
-  }
-}
-
-stage('Test'){
-steps {
-
-echo 'Runung Test'
-}
-}
-
-stage('Deploy'){
-steps {
-
-echo 'Deploy the build'
-}
-}
-
-post{
-    success{
-      echo 'Script has passed'
+    post {
+        success {
+            echo 'Script has passed'
+        }
+        failure {
+            echo 'Build has failed'
+        }
     }
-    failure{
-      echo 'Build has failed'
-    }
-}
 }
