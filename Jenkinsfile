@@ -35,10 +35,10 @@ pipeline {
     post {
         success {
             echo 'Script has passed'
-        }
+        } //this is test comment
         failure {
             echo 'Build has failed'
         }
     }
 }
-//this is test comment
+
