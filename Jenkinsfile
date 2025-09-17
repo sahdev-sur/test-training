@@ -40,7 +40,7 @@ pipeline {
             echo 'Script has passed'
         } 
         failure {
-            echo 'Build has failed'
+            echo 'Build has failed 1'
         }
     }
 }
